@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('cards', ['uses' => 'CardController@index', 'as' => 'cards.index']);
+Route::get('cards/{uuid}', ['uses' => 'CardController@show', 'as' => 'cards.show']);
+
 Route::get('/', function () {
     return view('welcome');
 });

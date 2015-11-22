@@ -6,7 +6,13 @@ default:
             #env_path: .env.behat
         Behat\MinkExtension:
             default_session: laravel
+            base_url: http://ascension.dev/
             laravel: ~
+    formatters:
+        pretty:
+            verbose: true
+            paths: false
+            snippets: true
     suites:
         features:
             paths:    [ %paths.base%/tests/behat/api ]

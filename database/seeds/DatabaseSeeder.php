@@ -13,9 +13,18 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        try {
+            \DB::beginTransaction();
 
-        // $this->call(UserTableSeeder::class);
+            $this->call(ExpansionSeeder::class);
+            $this->call(FactionSeeder::class);
+            $this->call(ChronicleCardSeeder::class);
 
+            \DB::commit();
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            $this->command->error($e->getMessage());
+        }
         Model::reguard();
     }
 }
