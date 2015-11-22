@@ -28,21 +28,6 @@ use App\Database\Model;
 class Card extends Model
 {
     /**
-     * @param string $uuid
-     *
-     * @return Card
-     */
-    public static function byUuid($uuid)
-    {
-        $instance = new static;
-        $query    = $instance->newQuery();
-
-        return $query
-            ->where('uuid', $uuid)
-            ->firstOrFail();
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function expansion()

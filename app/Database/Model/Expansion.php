@@ -13,6 +13,8 @@ use App\Database\Model;
  * @property string                                        $name
  * @property string                                        $abbreviation
  * @property-read \Illuminate\Database\Eloquent\Collection $cards
+ *
+ * @method static \Illuminate\Pagination\LengthAwarePaginator paginate($perPage = null, $columns = ['*'], $pageName = 'name', $page = null)
  */
 class Expansion extends Model
 {

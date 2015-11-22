@@ -10,6 +10,7 @@
 
 namespace App\Database;
 
+use App\Database\Model\Card;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 use Ramsey\Uuid\Uuid;
 
@@ -26,6 +27,21 @@ class Model extends BaseModel
      * @var array
      */
     protected $fillable = ['uuid'];
+
+    /**
+     * @param string $uuid
+     *
+     * @return Card
+     */
+    public static function byUuid($uuid)
+    {
+        $instance = new static;
+        $query    = $instance->newQuery();
+
+        return $query
+            ->where('uuid', $uuid)
+            ->firstOrFail();
+    }
 
     /**
      * Override to ensure uuid is set, so everything can be referenced from that

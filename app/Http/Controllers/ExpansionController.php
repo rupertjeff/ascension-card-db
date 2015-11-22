@@ -1,48 +1,50 @@
 <?php
-
+/**
+ * Name: ExpansionController.php
+ * Description:
+ * Version: 0.0.1
+ * Author: jeffr
+ * Created: 2015-11-21
+ * Last Modified: 2015-11-21
+ */
 namespace App\Http\Controllers;
 
-use App\Database\Model\Card;
-use App\Transformer\Card as CardTransformer;
+use App\Database\Model\Expansion;
+use App\Transformer\Expansion as ExpansionTransformer;
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 /**
- * Class CardController
+ * Class ExpansionController
  *
  * @package App\Http\Controllers
  */
-class CardController extends Controller
+class ExpansionController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function index()
     {
-        $paginator = Card::paginate(config('pagination.perPage', 10));
+        $paginator = Expansion::paginate(config('pagination.perPage', 10));
         $data      = $paginator->getCollection();
 
         return fractal()
-            ->collection($data, new CardTransformer, 'card')
+            ->collection($data, new ExpansionTransformer, 'expansion')
             ->paginateWith(new IlluminatePaginatorAdapter($paginator))
             ->toArray();
     }
 
     /**
-     * Display the specified resource.
-     *
      * @param Request $request
      * @param string  $uuid
      *
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function show(Request $request, $uuid)
     {
         return fractal()
-            ->item(Card::byUuid($uuid), new CardTransformer, 'card')
+            ->item(Expansion::byUuid($uuid), new ExpansionTransformer, 'expansion')
             ->parseIncludes($this->getIncludesFromRequest($request))
             ->toArray();
     }

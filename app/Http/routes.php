@@ -13,6 +13,8 @@
 
 Route::get('cards', ['uses' => 'CardController@index', 'as' => 'cards.index']);
 Route::get('cards/{uuid}', ['uses' => 'CardController@show', 'as' => 'cards.show']);
+Route::get('expansions', ['uses' => 'ExpansionController@index', 'as' => 'expansions.index']);
+Route::get('expansions/{uuid}', ['uses' => 'ExpansionController@show', 'as' => 'expansions.show']);
 
 Route::get('/', function () {
     return view('welcome');
