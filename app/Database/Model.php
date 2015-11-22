@@ -20,6 +20,8 @@ use Ramsey\Uuid\Uuid;
  * @package App\Database
  *
  * @property string $uuid
+ *
+ * @method static \Illuminate\Pagination\LengthAwarePaginator paginate($perPage = null, $columns = ['*'], $pageName = 'name', $page = null)
  */
 class Model extends BaseModel
 {

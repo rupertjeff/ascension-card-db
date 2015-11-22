@@ -22,8 +22,6 @@ use App\Database\Model;
  *
  * @property-read Expansion $expansion
  * @property-read Faction   $faction
- *
- * @method static \Illuminate\Pagination\LengthAwarePaginator paginate($perPage = null, $columns = ['*'], $pageName = 'name', $page = null)
  */
 class Card extends Model
 {
